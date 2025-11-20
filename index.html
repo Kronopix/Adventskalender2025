@@ -1,239 +1,185 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adventskalender 2024</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom, #ffefba, #ffffff);
-      text-align: center;
-      padding: 20px;
-      color: #2c3e50;
-      position: relative;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adventskalender 2025</title>
 
-    h1 {
-      color: #b22222;
-      font-size: 2.5em;
-      margin-bottom: 5px;
-      animation: fadeIn 2s;
-      display: inline-block;
-      text-align: center;
-    }
+<style>
 
-    .emoji {
-      font-size: 2em;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Verdana", sans-serif;
+    background: radial-gradient(circle at top, #ff2e2e, #7a0000);
+    overflow-x: hidden;
+    color: white;
+    text-align: center;
+  }
 
-    .subtitle {
-      font-size: 1.5em;
-      color: #b22222;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
+  /* EXTREMER TITEL */
+  h1 {
+    margin-top: 40px;
+    font-size: 3.5em;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 
+      0 0 10px #ffffff,
+      0 0 20px #ffcccc,
+      0 0 40px #ff1a1a,
+      0 0 80px #ff0000;
+    animation: glow 3s infinite ease-in-out;
+  }
 
-    input {
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px 5px;
-      border: 2px solid #b22222;
-      border-radius: 5px;
-    }
+  @keyframes glow {
+    0% { text-shadow: 0 0 10px #ff9999, 0 0 20px #ffb3b3; }
+    50% { text-shadow: 0 0 25px #ffffff, 0 0 60px #ff0000; }
+    100% { text-shadow: 0 0 10px #ff9999, 0 0 20px #ffb3b3; }
+  }
 
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      color: #fff;
-      background-color: #b22222;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
+  .subtitle {
+    font-size: 1.4em;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    color: #ffeaea;
+    opacity: 0.9;
+  }
 
-    button:hover {
-      background-color: #a11c1c;
-      transform: scale(1.1);
-    }
+  /* Eingabebox */
+  input {
+    padding: 15px;
+    font-size: 18px;
+    width: 70%;
+    max-width: 350px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    text-align: center;
+    box-shadow: 0 0 10px #fff;
+    background: #ffffffdd;
+    margin-bottom: 20px;
+  }
 
-    #result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #2e8b57;
-      animation: fadeIn 1s;
-    }
+  button {
+    font-size: 20px;
+    background: linear-gradient(45deg, #ff0000, #cc0000);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 12px #ffb3b3;
+    transition: 0.2s;
+  }
 
-    #imageBox {
-      margin-top: 20px;
-      max-width: 80%;
-      max-height: 300px;
-      display: none;
-      border: 3px solid #b22222;
-      border-radius: 10px;
-      animation: fadeIn 1s;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ffffff;
+  }
 
-    footer {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      font-size: 14px;
-      color: #555;
-    }
+  #result {
+    margin-top: 25px;
+    font-size: 1.7em;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffffffaa;
+  }
 
-    footer a {
-      color: #b22222;
-      text-decoration: none;
-    }
+  /* Schneeflocken & Weihnachtsobjekte */
+  .float {
+    position: fixed;
+    top: -100px;
+    font-size: 2.4em;
+    animation: fall linear infinite;
+    opacity: 0.9;
+    pointer-events: none;
+  }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+  @keyframes fall {
+    0% { transform: translateY(-100px) rotate(0deg); }
+    100% { transform: translateY(120vh) rotate(360deg); }
+  }
 
-    .center-footer {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 14px;
-      color: #555;
-    }
+  footer {
+    margin-top: 80px;
+    font-size: 14px;
+    opacity: 0.7;
+  }
 
-    /* Animationen */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
+  footer a {
+    color: #fff;
+    text-decoration: none;
+  }
 
-    @keyframes snow {
-      0% {
-        transform: translateY(-10px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(600px);
-        opacity: 1;
-      }
-    }
-
-    /* Schneeflocken */
-    .snowflake {
-      position: absolute;
-      top: -50px;
-      color: #fff;
-      font-size: 2em;
-      animation: snow linear infinite;
-      pointer-events: none;
-    }
-
-    .snowflake:nth-child(odd) {
-      animation-duration: 10s;
-      left: 20%;
-    }
-
-    .snowflake:nth-child(even) {
-      animation-duration: 8s;
-      left: 80%;
-    }
-
-    .snowflake:nth-child(3n) {
-      animation-duration: 12s;
-      left: 50%;
-    }
-
-    .snowflake:nth-child(4n) {
-      animation-duration: 15s;
-      left: 30%;
-    }
-
-    .snowflake:nth-child(5n) {
-      animation-duration: 11s;
-      left: 70%;
-    }
-
-  </style>
+</style>
 </head>
+
 <body>
-  <h1>
-    <span class="emoji">🎄</span><br>
-    Adventskalender<br>2024
-  </h1>
-  <p class="subtitle">für die best Fründin</p>
-  <p>Gib das Code-Wort ein, um deine Mystery-Box zu öffnen:</p>
-  
-  <input type="text" id="codeInput" placeholder="Code-Wort">
-  <button onclick="pruefen()">Prüfen</button>
-  <p id="result"></p>
-  <img id="imageBox" src="" alt="Mystery Box Bild">
 
-  <footer>
-    Made by <a href="https://github.com/Kronopix" target="_blank">Nick von Gunten</a>
-  </footer>
+<h1>🎄 Adventskalender 2025</h1>
+<div class="subtitle">für die best Fründin ❤️</div>
 
-  <!-- Schneeflocken -->
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
-  <div class="snowflake">❄️</div>
+<p>Gib dein Code-Wort ein:</p>
 
-  <script>
-    const codeWoerter = {
-      "schnee": { tag: "2. Dezember", image: "images/schnee.jpg" },
-      "kerze": { tag: "4. Dezember", image: "images/kerze.jpg" },
-      "baum": { tag: "6. Dezember", image: "images/baum.jpg" },
-      "stern": { tag: "8. Dezember", image: "images/stern.jpg" },
-      "engel": { tag: "10. Dezember", image: "images/engel.jpg" },
-      "geschenk": { tag: "12. Dezember", image: "images/geschenk.jpg" },
-      "gluehwein": { tag: "14. Dezember", image: "images/gluehwein.jpg" },
-      "plätzchen": { tag: "16. Dezember", image: "images/plaetzchen.jpg" },
-      "schokoriegel": { tag: "18. Dezember", image: "images/schokoriegel.jpg" },
-      "winter": { tag: "20. Dezember", image: "images/winter.jpg" },
-      "freude": { tag: "22. Dezember", image: "images/freude.jpg" },
-      "weihnachten": { tag: "24. Dezember", image: "images/weihnachten.jpg" }
-    };
+<input id="codeInput" type="text" placeholder="Code-Wort eingeben">
+<br>
+<button onclick="checkCode()">Öffnen 🎁</button>
 
-    const offeneBoxen = new Set();
+<div id="result"></div>
 
-    function pruefen() {
-      const input = document.getElementById("codeInput").value.toLowerCase();
-      const result = document.getElementById("result");
-      const imageBox = document.getElementById("imageBox");
+<footer>
+  Made by <a href="https://github.com/Kronopix" target="_blank">Nick von Gunten</a>
+</footer>
 
-      if (offeneBoxen.has(input)) {
-        result.textContent = "Du hast diese Box schon geöffnet! Versuch ein anderes Code-Wort.";
-        return;
-      }
+<div id="floating"></div>
 
-      if (codeWoerter[input]) {
-        const boxInfo = codeWoerter[input];
-        offeneBoxen.add(input);
+<script>
 
-        result.textContent = "🎉 " + boxInfo.tag;
-        imageBox.src = boxInfo.image;
-        imageBox.style.display = "block";
-      } else {
-        result.textContent = "Falsches Code-Wort. Versuch es erneut!";
-        imageBox.style.display = "none";
-      }
+  /* Deine bisherigen Code-Wörter bleiben
+     → die neuen Wörter fügst du mir später ein */
 
-      document.getElementById("codeInput").value = "";
+  const codeWords = {
+    "gutschein": "02. Dezember – Seetal + Freiamt Reise",
+    "sprudel": "04. Dezember – Wassermelone…Bad?",
+    "samichlaus": "06. Dezember – Chnabbere und Bastle",
+    "tomorrowland": "08. Dezember – Ned das, was du denksch",
+    "gusch": "10. Dezember – ÄuÄ scho, iu",
+    "dubai": "12. Dezember – Fast, aber ned ganz",
+    "halsweh": "14. Dezember – Was hilft?",
+    "dr.pepper": "16. Dezember – Was chönnt besser sie?",
+    "fussfettisch": "18. Dezember – Zum Glück hesch en ned",
+    "enttäuschung": "20. Dezember – Din jahrelange Wunsch",
+    "finnland": "22. Dezember – Mehujäääää?",
+    "fick": "24. Dezember – Fick mich…"
+  };
+
+  function checkCode() {
+    const value = document.getElementById("codeInput").value.toLowerCase().trim();
+    const result = document.getElementById("result");
+
+    if (codeWords[value]) {
+      result.textContent = codeWords[value];
+    } else {
+      result.textContent = "❌ Falsches Code-Wort!";
     }
-  </script>
+  }
+
+  /* Viele Schneeflocken + Weihnachtsobjekte */
+  const emojis = ["❄️", "❄️", "❄️", "❄️", "❄️", "✨", "🎅", "🦌", "🎁", "🔔", "🎄", "🎀"];
+
+  const fl = document.getElementById("floating");
+
+  for (let i = 0; i < 50; i++) {
+    let el = document.createElement("div");
+    el.className = "float";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = 4 + Math.random() * 6 + "s";
+    el.style.fontSize = (1.5 + Math.random() * 2.5) + "em";
+    el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    fl.appendChild(el);
+  }
+
+</script>
+
 </body>
 </html>
