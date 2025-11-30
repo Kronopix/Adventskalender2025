@@ -15,24 +15,24 @@
   overflow-x: hidden;
  }
  h1 {
-  font-size: 3rem;
-  margin-top: 40px;
+  font-size: 2.2rem; /* kleiner für Handys */
+  margin-top: 30px;
   text-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff;
  }
  h2 {
   margin-top: -10px;
-  font-size: 1.4rem;
+  font-size: 1.1rem; /* kleiner für Handys */
   color: #ffe6ff;
   text-shadow: 0 0 10px #ff66ff;
  }
  .container {
-  margin-top: 40px;
+  margin-top: 30px;
  }
  input {
-  padding: 15px;
+  padding: 12px;
   width: 70%;
-  max-width: 280px;
-  font-size: 1.1rem;
+  max-width: 260px;
+  font-size: 1rem; /* kleiner */
   border-radius: 10px;
   border: none;
   outline: none;
@@ -42,19 +42,19 @@
  button {
   display: block;
   margin: 20px auto;
-  padding: 12px 30px;
+  padding: 10px 25px;
   background: #ff00ff;
   border: none;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: 1rem; /* kleiner */
   font-weight: bold;
   color: #fff;
   cursor: pointer;
   box-shadow: 0 0 15px #ff00ff;
  }
  #result {
-  margin-top: 30px;
-  font-size: 1.6rem;
+  margin-top: 25px;
+  font-size: 1.3rem; /* kleiner */
   text-shadow: 0 0 10px #00eaff;
  }
  /* Falling elements */
@@ -62,13 +62,22 @@
   position: fixed;
   top: -10%;
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   animation: fall linear infinite;
   opacity: 0.8;
  }
  @keyframes fall {
   0% {transform: translateY(-10vh) rotate(0deg);} 
   100% {transform: translateY(110vh) rotate(360deg);} 
+ }
+
+ /* Responsive für kleine Bildschirme */
+ @media (max-width: 480px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1rem; }
+  input { font-size: 0.95rem; width: 80%; }
+  button { font-size: 0.95rem; padding: 8px 20px; }
+  #result { font-size: 1.1rem; }
  }
 </style>
 </head>
@@ -118,7 +127,7 @@ function createFalling() {
  elem.textContent = symbols[Math.floor(Math.random() * symbols.length)];
  elem.style.left = Math.random() * 100 + 'vw';
  elem.style.animationDuration = 5 + Math.random() * 7 + 's';
- elem.style.fontSize = 1 + Math.random() * 1.5 + 'rem';
+ elem.style.fontSize = 0.8 + Math.random() * 1.2 + 'rem';
  document.body.appendChild(elem);
  setTimeout(() => elem.remove(), 13000);
 }
