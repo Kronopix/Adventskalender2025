@@ -1,184 +1,128 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Adventskalender 2025</title>
-
 <style>
-
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Verdana", sans-serif;
-    background: radial-gradient(circle at top, #ff2e2e, #7a0000);
-    overflow-x: hidden;
-    color: white;
-    text-align: center;
-  }
-
-  /* EXTREMER TITEL */
-  h1 {
-    margin-top: 40px;
-    font-size: 3.5em;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #fff;
-    text-shadow: 
-      0 0 10px #ffffff,
-      0 0 20px #ffcccc,
-      0 0 40px #ff1a1a,
-      0 0 80px #ff0000;
-    animation: glow 3s infinite ease-in-out;
-  }
-
-  @keyframes glow {
-    0% { text-shadow: 0 0 10px #ff9999, 0 0 20px #ffb3b3; }
-    50% { text-shadow: 0 0 25px #ffffff, 0 0 60px #ff0000; }
-    100% { text-shadow: 0 0 10px #ff9999, 0 0 20px #ffb3b3; }
-  }
-
-  .subtitle {
-    font-size: 1.4em;
-    margin-top: -10px;
-    margin-bottom: 25px;
-    color: #ffeaea;
-    opacity: 0.9;
-  }
-
-  /* Eingabebox */
-  input {
-    padding: 15px;
-    font-size: 18px;
-    width: 70%;
-    max-width: 350px;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    text-align: center;
-    box-shadow: 0 0 10px #fff;
-    background: #ffffffdd;
-    margin-bottom: 20px;
-  }
-
-  button {
-    font-size: 20px;
-    background: linear-gradient(45deg, #ff0000, #cc0000);
-    padding: 12px 30px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 12px #ffb3b3;
-    transition: 0.2s;
-  }
-
-  button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px #ffffff;
-  }
-
-  #result {
-    margin-top: 25px;
-    font-size: 1.7em;
-    font-weight: bold;
-    text-shadow: 0 0 10px #ffffffaa;
-  }
-
-  /* Schneeflocken & Weihnachtsobjekte */
-  .float {
-    position: fixed;
-    top: -100px;
-    font-size: 2.4em;
-    animation: fall linear infinite;
-    opacity: 0.9;
-    pointer-events: none;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(-100px) rotate(0deg); }
-    100% { transform: translateY(120vh) rotate(360deg); }
-  }
-
-  footer {
-    margin-top: 80px;
-    font-size: 14px;
-    opacity: 0.7;
-  }
-
-  footer a {
-    color: #fff;
-    text-decoration: none;
-  }
-
+ body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: radial-gradient(circle at top, #1a002d, #000);
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+ }
+ h1 {
+  font-size: 3rem;
+  margin-top: 40px;
+  text-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff;
+ }
+ h2 {
+  margin-top: -10px;
+  font-size: 1.4rem;
+  color: #ffe6ff;
+  text-shadow: 0 0 10px #ff66ff;
+ }
+ .container {
+  margin-top: 40px;
+ }
+ input {
+  padding: 15px;
+  width: 70%;
+  max-width: 280px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  text-align: center;
+  box-shadow: 0 0 10px #ff00ff;
+ }
+ button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 30px;
+  background: #ff00ff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff00ff;
+ }
+ #result {
+  margin-top: 30px;
+  font-size: 1.6rem;
+  text-shadow: 0 0 10px #00eaff;
+ }
+ /* Falling elements */
+ .flake, .ornament, .star {
+  position: fixed;
+  top: -10%;
+  color: #fff;
+  font-size: 1.4rem;
+  animation: fall linear infinite;
+  opacity: 0.8;
+ }
+ @keyframes fall {
+  0% {transform: translateY(-10vh) rotate(0deg);} 
+  100% {transform: translateY(110vh) rotate(360deg);} 
+ }
 </style>
 </head>
-
 <body>
 
-<h1>🎄 Adventskalender 2025</h1>
-<div class="subtitle">für die best Fründin ❤️</div>
+<h1>🎄 Adventskalender 2025 🎄</h1>
+<h2>Für di best Fründin</h2>
 
-<p>Gib dein Code-Wort ein:</p>
-
-<input id="codeInput" type="text" placeholder="Code-Wort eingeben">
-<br>
-<button onclick="checkCode()">Öffnen 🎁</button>
-
-<div id="result"></div>
-
-<footer>
-  Made by <a href="https://github.com/Kronopix" target="_blank">Nick von Gunten</a>
-</footer>
-
-<div id="floating"></div>
+<div class="container">
+ <input id="codeInput" placeholder="Codewort igäh" />
+ <button onclick="checkCode()">prüefe</button>
+ <div id="result"></div>
+</div>
 
 <script>
+const data = {
+ "genz": "1. Dezember – Pafuqi mendore",
+ "konfi": "3. Dezember – Next try",
+ "chnoblibrot": "5. Dezember – Entli weder uffülle",
+ "ginger": "7. Dezember – Beer",
+ "thailand": "9. Dezember – Pomelo",
+ "salatsauce": "11. Dezember – Grossi Hoffnige",
+ "birne": "13. Dezember – Lets try",
+ "feige": "15. Dezember – Apfel",
+ "haselnuss": "17. Dezember – Maybe en Fehler",
+ "peru": "19. Dezember – Kei Ahnig",
+ "china": "21. Dezember – Isch jo logisch",
+ "schal": "23. Dezember – Alpaka?"
+};
 
-  /* Deine bisherigen Code-Wörter bleiben
-     → die neuen Wörter fügst du mir später ein */
+function checkCode() {
+ const input = document.getElementById('codeInput').value.trim().toLowerCase();
+ const result = document.getElementById('result');
+ if (data[input]) {
+  result.textContent = data[input];
+ } else {
+  result.textContent = "Falschs Codewort 💀";
+ }
+}
 
-  const codeWords = {
-    "gutschein": "02. Dezember – Seetal + Freiamt Reise",
-    "sprudel": "04. Dezember – Wassermelone…Bad?",
-    "samichlaus": "06. Dezember – Chnabbere und Bastle",
-    "tomorrowland": "08. Dezember – Ned das, was du denksch",
-    "gusch": "10. Dezember – ÄuÄ scho, iu",
-    "dubai": "12. Dezember – Fast, aber ned ganz",
-    "halsweh": "14. Dezember – Was hilft?",
-    "dr.pepper": "16. Dezember – Was chönnt besser sie?",
-    "fussfettisch": "18. Dezember – Zum Glück hesch en ned",
-    "enttäuschung": "20. Dezember – Din jahrelange Wunsch",
-    "finnland": "22. Dezember – Mehujäääää?",
-    "fick": "24. Dezember – Fick mich…"
-  };
+// Create extreme festive falling symbols
+const symbols = ["❄", "❅", "❆", "🎄", "⭐", "✨", "🎁", "🔔", "🎅", "🦌"];
 
-  function checkCode() {
-    const value = document.getElementById("codeInput").value.toLowerCase().trim();
-    const result = document.getElementById("result");
-
-    if (codeWords[value]) {
-      result.textContent = codeWords[value];
-    } else {
-      result.textContent = "❌ Falsches Code-Wort!";
-    }
-  }
-
-  /* Viele Schneeflocken + Weihnachtsobjekte */
-  const emojis = ["❄️", "❄️", "❄️", "❄️", "❄️", "✨", "🎅", "🦌", "🎁", "🔔", "🎄", "🎀"];
-
-  const fl = document.getElementById("floating");
-
-  for (let i = 0; i < 50; i++) {
-    let el = document.createElement("div");
-    el.className = "float";
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.animationDuration = 4 + Math.random() * 6 + "s";
-    el.style.fontSize = (1.5 + Math.random() * 2.5) + "em";
-    el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-    fl.appendChild(el);
-  }
-
+function createFalling() {
+ const elem = document.createElement('div');
+ elem.className = 'flake';
+ elem.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+ elem.style.left = Math.random() * 100 + 'vw';
+ elem.style.animationDuration = 5 + Math.random() * 7 + 's';
+ elem.style.fontSize = 1 + Math.random() * 1.5 + 'rem';
+ document.body.appendChild(elem);
+ setTimeout(() => elem.remove(), 13000);
+}
+setInterval(createFalling, 250);
 </script>
 
 </body>
